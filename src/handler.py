@@ -21,9 +21,11 @@ def handler(job):
     job_input = job['input']
     prompt = job_input['prompt']
     negative_prompt = job_input['negative_prompt']
+    width = job_input['width']
+    height = job_input['height']
 
     time_start = time.time()
-    image = pipe(prompt=prompt, negative_prompt = negative_prompt, num_inference_steps=8, guidance_scale=3.5).images[0]
+    image = pipe(prompt=prompt, negative_prompt = negative_prompt, num_inference_steps=8, guidance_scale=3.5, width = width, height = height).images[0]
     print(f"Time taken: {time.time() - time_start}")
 
     buffer = io.BytesIO()
