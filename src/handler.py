@@ -26,7 +26,14 @@ def handler(job):
     prompt = job_input['prompt']
 
     time_start = time.time()
-    image = pipe(prompt=prompt, num_inference_steps=1, guidance_scale=0.0).images[0]
+    image = pipe(
+  prompt="a cat in a bustling middle eastern city",
+  num_inference_steps=8,
+  guidance_scale=3,
+  width=768,
+  height=768,
+  clip_skip=1
+).images[0]
     print(f"Time taken: {time.time() - time_start}")
 
     buffer = io.BytesIO()
