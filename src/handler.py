@@ -20,6 +20,7 @@ def handler(job):
     """ Handler function that will be used to process jobs. """
     job_input = job['input']
     prompt = job_input['prompt']
+    negative_prompt = job_input['negative_prompt']
 
     time_start = time.time()
     image = pipe(prompt=prompt, num_inference_steps=8, guidance_scale=3.5).images[0]
