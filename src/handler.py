@@ -27,9 +27,9 @@ def handler(job):
 
     time_start = time.time()
     image = pipe(
-  prompt="a cat in a bustling middle eastern city",
+  prompt=prompt,
   num_inference_steps=8,
-  guidance_scale=3,
+  guidance_scale=4.5,
   width=768,
   height=768,
   clip_skip=1
