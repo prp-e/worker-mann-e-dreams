@@ -11,8 +11,12 @@ import time
 # You will want models to be loaded into memory before starting serverless.
 
 try:
-    pipe = AutoPipelineForText2Image.from_pretrained("stabilityai/sdxl-turbo", torch_dtype=torch.float16, variant="fp16")
-    pipe.to("cuda")
+    
+    pipe = DiffusionPipeline.from_pretrained(
+    "mann-e/Mann-E_Dreams", torch_dtype=torch.float16
+).to("cuda")
+    pipe.scheduler = DPMSolverSinglestepScheduler.from_config(pipe.scheduler.config, use_karras_sigmas=True)
+
 except RuntimeError:
     quit()
 
